@@ -11,12 +11,13 @@ $database = new Database(
 );
 
 
-
+// estabelece conexão com o banco
 $conn =$database->createConnection();
 
+// prepara a consulta (statement)
 $stmt = $conn-> prepare("SELECT * FROM filme");
 
-
+// executa a consulta
 $stmt->execute();
 
 ?>
@@ -31,8 +32,10 @@ $stmt->execute();
 <body>
     <table border="1">
         <tbody>
+            <!-- percorre a lista de resultados -->
             <?php foreach ($stmt as $row) { ?>
         <tr>
+            <!-- escreve na tabela cada item retornado-->
             <td> <?php echo $row["id"] ?> </td>
             <td> <?php echo $row["titulo"] ?> </td>
             <td> <?php echo $row["ano"] ?> </td>
